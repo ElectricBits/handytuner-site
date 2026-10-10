@@ -26,4 +26,21 @@ section{padding:120px 0}.section-head{display:grid;grid-template-columns:.8fr 1.
 <section id="pulse" class="pulse"><div class="wrap"><div class="section-head"><h2>Meet the PULSE engine.</h2><p>Performance tuning that reacts to the game instead of forcing you to babysit sliders.</p></div><div class="pulse-grid"><article class="pulse-card"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h4l2-7 4 14 2-7h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>AutoTDP</h3><p>Adjusts power around your frame-rate target, helping avoid wasted watts.</p></article><article class="pulse-card"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1M18.4 5.6l-2.1 2.1m-8.6 8.6-2.1 2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg><h3>Fan control</h3><p>Balance cooling and noise from the same overlay you use to tune performance.</p></article><article class="pulse-card"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4h10M12 4v5l4 4M12 9l-4 4M8 13v5h8v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Frame caps</h3><p>Choose a sensible ceiling for smoother pacing and lower power draw.</p></article><article class="pulse-card"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 7h10v10H7zM10 3v4m4-4v4m-4 10v4m4-4v4M3 10h4m10 0h4M3 14h4m10 0h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><h3>One control loop</h3><p>Fewer tweak tools fighting over the same device settings.</p></article></div></div></section>
 <section class="wrap how"><h2>Set it once.<br>HandyTuner handles the rest.</h2><div class="steps"><article class="step"><div><h3>Open your game</h3><p>The lightweight HUD keeps the essentials in view.</p></div></article><article class="step"><div><h3>Pick a target</h3><p>Choose the frame rate and profile that feel right for the game.</p></div></article><article class="step"><div><h3>Save the preset</h3><p>Next time, the right settings come back automatically.</p></div></article></div></section>
 <section class="final wrap"><h2>Your handheld. Your games. Your tune.</h2><p>HandyTuner is in beta and currently tested on the AYN Odin 2 Portal. Download the latest build or follow the open-source project as support grows.</p><div class="actions"><a class="button primary" href="https://github.com/ElectricBits/HandyTuner/releases/download/v0.10.4-beta/HandyTuner-0.10.4-beta.apk" target="_blank" rel="noreferrer">Download v0.10.4 beta</a><a class="button" href="https://github.com/ElectricBits/HandyTuner/releases" target="_blank" rel="noreferrer">All releases</a></div></section></main><footer><div class="wrap"><span>HandyTuner • Android gaming handheld tuning</span><span>Beta • Tested on AYN Odin 2 Portal</span></div></footer>
+<script>
+(function() {
+fetch('https://api.github.com/repos/ElectricBits/HandyTuner/releases')
+.then(function(r) { return r.json(); })
+.then(function(releases) {
+var total = 0;
+releases.forEach(function(rel) {
+(rel.assets || []).forEach(function(a) { total += a.download_count || 0; });
+});
+var num = document.querySelector('.download-stat strong');
+var sub = document.querySelector('.download-stat span');
+if (num) num.textContent = total.toLocaleString() + ' downloads';
+if (sub) sub.textContent = 'Across all releases · Live';
+})
+.catch(function() {});
+})();
+</script>
 </body></html>
