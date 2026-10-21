@@ -1,6 +1,11 @@
-## Release discipline
-- Do not cut a GitHub release for every change. Batch fixes and ship on a weekly cadence; ship immediately only for crashes or critical bugs.
-- Before cutting a release, check the changelog: if there is nothing user-visible to announce, do not release.
-- Build/packaging/metadata-only fixes (gradle config, manifests, CI) do not need a new release. If a downstream like F-Droid needs the fix, point their recipe at the fix commit instead of cutting a new version.
-- Never move or rewrite a published tag, and never replace an APK on a published release. A published release is immutable — ship a new version instead.
-- Every release must have real changelog notes describing user-visible changes.
+# handytuner-site — notes for AI agents
+
+- The HandyTuner website: one self-contained `index.html` (CSS and images inlined) served by GitHub Pages from `main`. A push to `main` is live within a minute; there is no staging.
+- Run `git fetch` before editing; the site is sometimes edited from elsewhere.
+- `index.html` is several MB of base64 images. Never print or read it whole; search it, or strip `data:image/...` when reading.
+- When swapping a screenshot, keep the original `width`/`height` and wrapper elements (like `<span class="dash">`); the layout depends on them.
+- Before pushing, render the page at desktop and phone width and look at it, e.g. `chromium --headless=new --window-size=1440,1000 --screenshot=out.png file://$PWD/index.html`.
+- The download count comes live from the GitHub API; never hardcode it.
+- When HandyTuner ships a release, update the version, size and date line (`.release-meta`).
+- American spelling in all on-screen text.
+- Never force-push `main`.
